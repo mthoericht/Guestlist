@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de" ng-app = "guestList" ng-controller= "GuestsControl">
+<head>
+    <meta charset="UTF-8">
+    <title>Guestlist</title>
+    <script type="text/javascript" src="js/ext/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="js/ext/angular.js"></script>
+    <script type="text/javascript" src="js/GuestsHandler.js">window.onload = init;</script>
+
+    <!--styles -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-info">
+            <p>Sort Type: {{ sortType }}</p>
+            <p>Sort Reverse: {{ sortReverse }}</p>
+            <p>Search Query: {{ searchGuest }}</p>
+        </div>
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    <input type="text" class="form-control" placeholder="Search Guest" ng-model="searchGuest">
+                </div>
+            </div>
+        </form>
+        <br>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <td>
+                    <a href="" ng-click="sortType = 'class'; sortReverse = !sortReverse">
+                        Class
+                        <span ng-show="sortType == 'class' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'class' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="" ng-click="sortType = 'checked'; sortReverse = !sortReverse">
+                        CheckedIn
+                        <span ng-show="sortType == 'checked' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'checked' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="" ng-click="sortType = 'email'; sortReverse = !sortReverse">
+                        eMail
+                        <span ng-show="sortType == 'email' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'email' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="" ng-click="sortType = 'firstName'; sortReverse = !sortReverse">
+                        FirstName
+                        <span ng-show="sortType == 'firstName' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'firstName' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="" ng-click="sortType = 'lastName'; sortReverse = !sortReverse">
+                        LastName
+                        <span ng-show="sortType == 'lastName' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'lastName' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="guest in guests | orderBy:sortType:sortReverse | filter:searchGuest">
+                <td>{{guest.class}}</td>
+                <td><input type="checkbox" ng-model="guest.checked", ng-click="onClickGuestChecked($event, guest)"></td>
+                <td>{{guest.email}}</td>
+                <td>{{guest.firstName}}</td>
+                <td>{{guest.lastName}}</td>
+            </tbody>
+        </table>
+        <br>
+        <div>
+            <label>Add Guest</label><br>
+            <form name="formAddGuest" ng-submit="submitGuest(guest)">
+                E-mail: <input type="email" ng-model="guest.email" required/>
+                FirstName: <input type="text" ng-model="guest.firstName" required/>
+                LastName: <input type="text" ng-model="guest.lastName" required/>
+                <button id= "btnAddGuest" ng-disabled="!formAddGuest.$dirty" class ="BTNAddGuest" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

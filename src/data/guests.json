@@ -1,0 +1,49 @@
+[{
+    "class": "employee",
+    "id": "0",
+    "checked": false,
+    "email": "alfred.neumann@muster.de",
+    "firstName": "Alfred",
+    "lastName": "Neumann"
+  },
+  {
+    "class": "guest",
+    "id": "1",
+    "checked": false,
+    "email": "micha.heidenreich@wubbsa.de",
+    "firstName": "Michael",
+    "lastName": "Heidenreich"
+  },
+  {
+    "class": "guest",
+    "id": "2",
+    "checked": true,
+    "email": "alex.schimanski@wubbsa.de",
+    "firstName": "Alex",
+    "lastName": "Schimanski"
+  },
+  {
+    "class": "employee",
+    "id": "3",
+    "checked": false,
+    "email": "gloria.schulz@truut.de",
+    "firstName": "Gloria",
+    "lastName": "Schulz"
+  },
+  {
+    "class": "guest",
+    "id": "4",
+    "checked": true,
+    "email": "martin.muster@truut.de",
+    "firstName": "Martin",
+    "lastName": "Muster"
+  },
+  {
+    "class": "guest",
+    "id": "5",
+    "checked": false,
+    "email": "olga.Knie@truut.de",
+    "firstName": "Olga",
+    "lastName": "Knie"
+  }
+]
